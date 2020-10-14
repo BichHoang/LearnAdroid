@@ -21,7 +21,8 @@
         <RadioGroup
             android:id="@+id/radio_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
 
             <RadioButton
                 android:id="@+id/radio_answer1"

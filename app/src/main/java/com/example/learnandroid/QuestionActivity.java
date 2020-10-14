@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learnandroid.adapter.QuestionAdapter;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class QuestionActivity extends AppCompatActivity {
     ArrayList<Question> questions;
     DatabaseAccess databaseAccess;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     public void initQuestionView(){
         // Lookup the recyclerview in activity layout
-        RecyclerView recyclerView = findViewById(R.id.recycleView);
-
+        recyclerView = findViewById(R.id.recycleView);
         // Initialize contacts
         databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
@@ -44,5 +45,7 @@ public class QuestionActivity extends AppCompatActivity {
         // Set layout manager to position the items
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         // That's all!
+        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
+        pagerSnapHelper.attachToRecyclerView(recyclerView);
     }
 }
