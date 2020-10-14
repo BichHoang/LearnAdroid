@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Learn Android</string>
+    <string name="question">日本では、電車やバスなど公共交通機関でのケータイの通話を禁止している。しかし、ときどき緊急の用事で通話している人を見かける事がある。手短に （注１）すむのならよいが、長々と話をしている人を見るとついイライラしてしまう。これと似たような経験をお持ちの方も多いだろう。
+　電車やバスで聞こえてくる会話はまったく（       ）のに、ケータイは不快に感じてしまう。なぜかケータイは気になって仕方がない。この疑問をアメリカの心理学者が解明し、このほど科学誌に発表した。</string>
+    <string name="answer1">気にならない</string>
+    <string name="answer2">気がつかない</string>
+    <string name="answer3">気にする</string>
+    <string name="answer4">気にいらない</string>
+</resources>
