@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.learnandroid.model.Answer;
 import com.example.learnandroid.model.Question;
-import com.example.learnandroid.model.Questions;
 
 import java.util.ArrayList;
 

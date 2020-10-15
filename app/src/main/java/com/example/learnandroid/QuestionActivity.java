@@ -27,7 +27,6 @@ public class QuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycle_questions);
         initQuestionView();
-
     }
 
     public void initQuestionView(){

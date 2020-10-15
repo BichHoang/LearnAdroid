@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
+import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learnandroid.R;
@@ -25,6 +25,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     private ArrayList<Question> questions;
     private DatabaseAccess databaseAccess;
     private Context context;
+    private int checked_positon = -1;
 
     public QuestionAdapter(ArrayList<Question> questions) {
         this.questions = questions;
@@ -40,6 +41,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         public RadioButton answer2;
         public RadioButton answer3;
         public RadioButton answer4;
+        public RadioGroup radioGroup;
+        public RecyclerView recyclerView;
         public ViewHolder(View v) {
             super(v);
             question = v.findViewById(R.id.txt_question);
@@ -47,6 +50,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             answer2 = v.findViewById(R.id.radio_answer2);
             answer3 = v.findViewById(R.id.radio_answer3);
             answer4 = v.findViewById(R.id.radio_answer4);
+            radioGroup = v.findViewById(R.id.radio_group);
+            recyclerView = v.findViewById(R.id.recycleView);
         }
     }
 
@@ -67,7 +72,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         databaseAccess = DatabaseAccess.getInstance(context);
         databaseAccess.open();
         ArrayList<Answer> answers = databaseAccess.getAnswersByQuestion(questions.get(position).getId_question());
@@ -78,6 +83,17 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         holder.answer2.setText(answers.get(1).getAnswer());
         holder.answer3.setText(answers.get(2).getAnswer());
         holder.answer4.setText(answers.get(3).getAnswer());
+//        holder.setIsRecyclable(false);
+        holder.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Toast.makeText(group.getContext(), "Click: " + checkedId, Toast.LENGTH_SHORT).show();
+//                holder.recyclerView.smoothScrollToPosition(position + 1);
+                if(checked_positon == position){
+                    holder.radioGroup.clearCheck();
+                }
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

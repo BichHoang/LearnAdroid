@@ -9,6 +9,7 @@ public class Question {
     int id_skill;
     String question;
     String picture;
+    boolean checked;
 
     public Question(int id_question, int id_exam, int id_skill, String question, String picture) {
         this.id_question = id_question;
@@ -16,6 +17,7 @@ public class Question {
         this.id_skill = id_skill;
         this.question = question;
         this.picture = picture;
+        this.checked = false;
     }
 
     public int getId_question() {
@@ -56,5 +58,13 @@ public class Question {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 }
